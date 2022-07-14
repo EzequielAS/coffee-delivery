@@ -1,5 +1,4 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { ReactNode } from 'react'
 import bannerBackground from '../../../../assets/banner-background.svg' 
 import coffee from '../../../../assets/coffee.svg'
 

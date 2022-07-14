@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 
-export const Controls = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-`
-
-export const SelectQuantity = styled.div`
+export const SelectContainer = styled.div`
   background: ${props => props.theme['base-button']};
   border-radius: 6px;
   padding: 0.5rem;

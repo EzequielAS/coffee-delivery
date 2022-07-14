@@ -15,6 +15,7 @@ import irish from './assets/coffees/irish.png'
 
 export const coffeesDatas = [
   {
+    id: 1,
     image: traditional,
     name: "Expresso Tradicional",
     description: "O tradicional café feito com água quente e grãos moídos",
@@ -24,6 +25,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 2,
     image: american,
     name: "Expresso Americano",
     description: "Expresso diluído, menos intenso que o tradicional",
@@ -33,6 +35,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 3,
     image: cream,
     name: "Expresso Cremoso",
     description: "Café expresso tradicional com espuma cremosa",
@@ -42,6 +45,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 4,
     image: cold,
     name: "Expresso Gelado",
     description: "Bebida preparada com café expresso e cubos de gelo",
@@ -52,6 +56,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 5,
     image: milky,
     name: "Café com Leite",
     description: "Meio a meio de expresso tradicional com leite vaporizado",
@@ -62,6 +67,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 6,
     image: latte,
     name: "Latte",
     description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
@@ -72,6 +78,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 7,
     image: capuccino,
     name: "Capuccino",
     description: "Bebida com canela feita de doses iguais de café, leite e espuma",
@@ -82,6 +89,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 8,
     image: macchiato,
     name: "Macchiato",
     description: "Café expresso misturado com um pouco de leite quente e espuma",
@@ -92,6 +100,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 9,
     image: mocaccino,
     name: "Mocaccino",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
@@ -102,6 +111,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 10,
     image: chocohot,
     name: "Chocolate Quente",
     description: "Bebida feita com chocolate dissolvido no leite quente e café",
@@ -112,6 +122,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 11,
     image: cuban,
     name: "Cubano",
     description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
@@ -123,6 +134,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 12,
     image: hawaiian,
     name: "Havaiano",
     description: "Bebida adocicada preparada com café e leite de coco",
@@ -132,6 +144,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 13,
     image: arabic,
     name: "Árabe",
     description: "Bebida adocicada preparada com café e leite de coco",
@@ -141,6 +154,7 @@ export const coffeesDatas = [
     ]
   },
   {
+    id: 14,
     image: irish,
     name: "Irlandês",
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",

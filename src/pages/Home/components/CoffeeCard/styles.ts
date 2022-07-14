@@ -85,3 +85,10 @@ export const PriceValue = styled.b`
   line-height: 1.125rem;
   color: ${props => props.theme['base-text']};
 `
+
+export const Controls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`

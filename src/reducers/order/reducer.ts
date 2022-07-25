@@ -40,7 +40,7 @@ export function orderReducer(state: OrderState, action: actionType) {
 
             return {
               ...product,
-              quantity: oldQuantity + productAlreadyChoosed.quantity
+              quantity: oldQuantity + action.payload.product.quantity
             }
           }
 

@@ -89,27 +89,6 @@ export const Service = styled.div`
   gap: 0.75rem;
 `
 
-const SERVICES_COLORS = {
-  buy: 'yellow-dark',
-  packing: 'base-text',
-  delivery:'yellow',
-  coffee: 'purple'
-} as const
-
-interface ServiceIconProps {
-  backgroundColor: keyof typeof SERVICES_COLORS
-}
-
-export const ServiceIcon = styled.div<ServiceIconProps>`
-  padding: 0.5rem;
-  border-radius: 50%;
-  background: ${props => props.theme[SERVICES_COLORS[props.backgroundColor]]};
-  color: ${props => props.theme['background']};
-
-  display: flex;
-  align-items: center;
-`
-
 export const ImgStyled = styled.img`
   height: 22.5rem;
 

@@ -1,4 +1,4 @@
-import { CartForm } from './components/CartForm'
+import { DeliveryAddress } from './components/DeliveryAddress'
 import { CoffeesSelected } from './components/CoffeesSelected'
 import { PaymentMethod } from './components/PaymentMethod'
 
@@ -14,7 +14,7 @@ export function Cart() {
     <CartContainer>
       <OrderAdditionalInfo>
         <Title>Complete seu pedido</Title>
-        <CartForm />
+        <DeliveryAddress />
         <PaymentMethod />
       </OrderAdditionalInfo>
 

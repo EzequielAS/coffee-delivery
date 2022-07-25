@@ -10,11 +10,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   buttonType: TypesButton;
 }
 
-export function Button({ icon, label, buttonType }: ButtonProps) {
+export function Button({ icon, label, buttonType, ...rest }: ButtonProps) {
   return (
     <ButtonStyled 
       buttonType={buttonType}
       hasIconAndLabel={!!icon && !!label}
+      {...rest}
     >
       {icon}
       {label}

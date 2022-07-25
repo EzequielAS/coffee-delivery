@@ -20,6 +20,7 @@ export function Home() {
           {coffeesDatas.map(coffee => (
             <CoffeeCard 
               key={coffee.id}
+              id={coffee.id}
               image={coffee.image}
               name={coffee.name}
               description={coffee.description}

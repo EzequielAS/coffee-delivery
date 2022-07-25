@@ -1,5 +1,5 @@
-import { coffeesDatas } from '../../../../coffeesDatas'
 import { Button } from '../../../../components/Button'
+import { useOrderContext } from '../../../../contexts/OrderContext'
 import { Coffee } from './components/Coffee'
 
 import { 
@@ -10,16 +10,18 @@ import {
 } from './styles'
 
 export function CoffeesSelected() {
-  const coffees = coffeesDatas.slice(1, 3)
+  const { products } = useOrderContext()
 
   return (
     <CoffeesContainer>
-      {coffees.map(coffee => (
+      {products.map(coffee => (
         <Coffee
           key={coffee.id}
+          id={coffee.id}
           image={coffee.image}
           name={coffee.name}
           price={coffee.price}
+          quantity={coffee.quantity}
         />
       ))}
 

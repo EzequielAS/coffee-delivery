@@ -1,6 +1,8 @@
-import { Trash } from 'phosphor-react';
+import { Trash } from 'phosphor-react'
 import { Button } from '../../../../../../components/Button'
 import { SelectQuantity } from '../../../../../../components/SelectQuantity'
+import { useOrderContext } from '../../../../../../contexts/OrderContext'
+import { ICoffee } from '../../../../../../@types/coffee'
 
 import { 
   CoffeeContainer,
@@ -12,38 +14,50 @@ import {
   Wrapper
 } from './styles'
 
-interface CoffeeProps {
-  image: string;
-  name: string;
-  price: number;
-}
-
 export function Coffee({ 
+  id,
   image,
   name,
-  price
- }: CoffeeProps) {
+  price,
+  quantity
+ }: ICoffee) {
+  const { handleAddNewProduct } = useOrderContext()
+
   const priceFormmated = new Intl.NumberFormat('pt-BR', { 
     currency: 'BRL',
     style: 'currency',
     minimumFractionDigits: 2
    }).format(price)
 
+  function addCoffee() {
+    const product = {
+      id,
+      image,
+      name, 
+      price,
+      quantity: 1
+    }
+
+    handleAddNewProduct(product)
+  }
+
   return (
     <CoffeeContainer>
-      <ImgStyled  src={image} alt={name} />
+      <ImgStyled src={image} alt={name} />
 
       <Wrapper>
         <CoffeeInfos>
           <CoffeeName>{name}</CoffeeName>
-          <CoffeePrice>{priceFormmated}</CoffeePrice>
+          <CoffeePrice>
+            {priceFormmated}
+          </CoffeePrice>
         </CoffeeInfos>
 
         <Controls>
           <SelectQuantity
-            add={() => {}}
+            add={addCoffee}
             remove={() => {}}
-            quantity={1}
+            quantity={quantity}
           />
 
           <Button

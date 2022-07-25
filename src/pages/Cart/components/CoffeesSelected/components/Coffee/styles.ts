@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 
 export const CoffeeContainer = styled.div`
-  padding: 1.5rem 0;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid ${props => props.theme['base-button']};
 
   display: flex;
   align-items: center;
   gap: 1.25rem;
+
+  & + & {
+    margin-top: 1.5rem;
+  }
 `
 
 export const ImgStyled = styled.img`

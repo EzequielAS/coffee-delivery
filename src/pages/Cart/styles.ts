@@ -8,6 +8,11 @@ export const CartContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 28rem;
   gap: 2rem;
+
+  @media (max-width: 1140px) {
+    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
 `
 
 export const OrderAdditionalInfo = styled.div``

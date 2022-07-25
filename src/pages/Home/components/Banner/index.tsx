@@ -1,6 +1,13 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { 
+  Coffee, 
+  Package, 
+  ShoppingCart, 
+  Timer 
+} from 'phosphor-react'
+import { useTheme } from 'styled-components'
 import bannerBackground from '../../../../assets/banner-background.svg' 
 import coffee from '../../../../assets/coffee.svg'
+import { CircleIcon } from '../../../../components/CircleIcon'
 
 import { 
   BannerContainer, 
@@ -11,7 +18,6 @@ import {
   ServicesContainer,
   SpanStyled,
   Service,
-  ServiceIcon,
   ImgStyled,
 } from './styles'
 
@@ -19,26 +25,28 @@ const services = {
   buy: {
     label: 'Compra simples e segura',
     icon: <ShoppingCart weight='fill' />,
-    type: 'buy'
+    color: 'yellow-dark'
   },
   packing: {
     label: 'Embalagem mantém o café intacto',
     icon: <Package weight='fill' />,
-    type: 'packing'
+    color: 'base-text'
   },
   delivery: {
     label: 'Entrega rápida e rastreada',
     icon: <Timer weight='fill' />,
-    type: 'delivery'
+    color: 'yellow'
   },
   coffee: {
     label: 'O café chega fresquinho até você',
     icon: <Coffee weight='fill' />,
-    type: 'coffee'
+    color: 'purple'
   },
 } as const
 
 export function Banner() {
+  const colors = useTheme()
+
   return (
     <BannerContainer background={bannerBackground}>
       <BannerContent>
@@ -56,10 +64,10 @@ export function Banner() {
           <ServicesContainer>
             {Object.entries(services).map(([key, datas]) => (
               <Service key={key}>
-                <ServiceIcon backgroundColor={datas.type}>
-                  {datas.icon}
-                </ServiceIcon>
-                
+                <CircleIcon 
+                  bgColor={colors[datas.color]}
+                  icon={datas.icon}
+                />
                 <SpanStyled>{datas.label}</SpanStyled>
               </Service>
             ))}

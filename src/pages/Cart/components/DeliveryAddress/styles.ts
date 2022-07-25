@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 
-export const PaymentContainer = styled.div`
+export const FormContainer = styled.div`
   background: ${props => props.theme['base-card']};
+  margin-top: 0.9rem;
   border-radius: 6px;
-  margin-top: 0.75rem;
   padding: 2.5rem;
-
-  height: 207px;
 `
 
 export const Header = styled.div`
@@ -16,7 +14,7 @@ export const Header = styled.div`
   gap: 0.5rem;
 
   svg {
-    color: ${props => props.theme['purple']}
+    color: ${props => props.theme['yellow-dark']}
   }
 `
 
@@ -36,7 +34,13 @@ export const Subtitle = styled.p`
   line-height: 1.14rem;
 `
 
-export const MethodsWrapper = styled.div`
+export const InputsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+export const MultiInput = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;

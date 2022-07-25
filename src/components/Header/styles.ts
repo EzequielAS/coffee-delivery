@@ -40,4 +40,27 @@ export const AddressTag = styled.div`
   }
 `
 
-export const AddressText = styled.span``
+export const AddressText = styled.span`
+`
+
+export const CartButtonWrapper = styled.div`
+  position: relative;
+`
+
+export const CoffeeQuantity = styled.span`
+  position: absolute;
+  top: -20%;
+  right: -20%;
+
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  background: ${props => props.theme['yellow-dark']};
+  color: ${props => props.theme.white};
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

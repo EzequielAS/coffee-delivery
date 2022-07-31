@@ -11,6 +11,13 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   border-radius: 6px;
   padding: 0.5rem;
   transition: background 0.25s;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   display: flex;
   align-items: center;

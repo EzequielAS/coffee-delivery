@@ -29,6 +29,10 @@ export const MethodContainer = styled.div<{
   :hover {
     background: ${props => props.theme['base-hover']};
   }
+
+  @media (max-width: 590px) {
+    width: 100%;
+  }
 `
 
 export const Text = styled.span`

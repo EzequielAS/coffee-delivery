@@ -3,6 +3,7 @@ import { Button } from '../../../../../../components/Button'
 import { SelectQuantity } from '../../../../../../components/SelectQuantity'
 import { useOrderContext } from '../../../../../../contexts/OrderContext'
 import { ICoffee } from '../../../../../../@types/coffee'
+import { formatPrice } from '../../../../../../utils/formatPrice'
 
 import { 
   CoffeeContainer,
@@ -21,24 +22,26 @@ export function Coffee({
   price,
   quantity
  }: ICoffee) {
-  const { handleAddNewProduct } = useOrderContext()
+  const { 
+    handleIncrementProduct, 
+    handleRemoveProduct,
+    handleDecrementProduct 
+  } = useOrderContext()
 
-  const priceFormmated = new Intl.NumberFormat('pt-BR', { 
-    currency: 'BRL',
-    style: 'currency',
-    minimumFractionDigits: 2
-   }).format(price)
+  const priceFormmated = formatPrice(price)
 
-  function addCoffee() {
-    const product = {
-      id,
-      image,
-      name, 
-      price,
-      quantity: 1
-    }
+  function incrementCoffee() {
+    handleIncrementProduct(id)
+  }
 
-    handleAddNewProduct(product)
+  function decrementCoffee() {
+    if (quantity === 1) return
+
+    handleDecrementProduct(id)
+  }
+
+  function removeCoffee() {
+    handleRemoveProduct(id)
   }
 
   return (
@@ -55,8 +58,8 @@ export function Coffee({
 
         <Controls>
           <SelectQuantity
-            add={addCoffee}
-            remove={() => {}}
+            add={incrementCoffee}
+            remove={decrementCoffee}
             quantity={quantity}
           />
 
@@ -64,6 +67,7 @@ export function Coffee({
             icon={<Trash size={16} />}
             label="REMOVER"
             buttonType='clean'
+            onClick={removeCoffee}
           />
         </Controls>
       </Wrapper>

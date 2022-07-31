@@ -16,6 +16,13 @@ export const CardContainer = styled.div`
 export const ImgStyled = styled.img`
   height: 7.5rem;
   margin-top: -2.7rem;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 export const ChipsContainer = styled.div`
@@ -35,6 +42,13 @@ export const Chip = styled.div`
   line-height: 0.8125rem;
   padding: 0.25rem 0.5rem;
   border-radius: 100px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 export const TextContainer = styled.div`
@@ -71,6 +85,13 @@ export const Price = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 0.25rem;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 export const Currency = styled.span`

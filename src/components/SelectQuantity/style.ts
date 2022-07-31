@@ -25,4 +25,11 @@ export const SpanStyled = styled.span`
   line-height: 1.25rem;
   width: 1.25rem;
   text-align: center;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `

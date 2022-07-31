@@ -15,7 +15,11 @@ import {
 } from './styles'
 
 export function Header() {
-  const { totalProductsAddedToCart } = useOrderContext()
+  const { products } = useOrderContext()
+
+  const totalProductsAddedToCart = products.reduce((prev, current) => {
+    return prev + current.quantity
+  }, 0)
 
   return (
     <HeaderStyled>

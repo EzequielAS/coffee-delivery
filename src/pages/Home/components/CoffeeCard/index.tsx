@@ -41,8 +41,8 @@ export function CoffeeCard({
   const [coffeeQuantity, setCoffeeQuantity] = useState(1)
 
   const priceFormatted = new Intl.NumberFormat('pt-BR', { 
-     minimumFractionDigits: 2
-    }).format(price)
+    minimumFractionDigits: 2
+  }).format(price)
 
   function handleAddCoffeeQuantity() {
     setCoffeeQuantity(state => state + 1)

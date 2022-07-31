@@ -38,10 +38,24 @@ export const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 590px) {
+    > div {
+      width: 100%;
+    }
+  }
 `
 
 export const MultiInput = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+
+  @media (max-width: 590px) {
+    flex-direction: column;
+
+    > div {
+      width: 100%;
+    }
+  }
 `

@@ -5,8 +5,6 @@ export const PaymentContainer = styled.div`
   border-radius: 6px;
   margin-top: 0.75rem;
   padding: 2.5rem;
-
-  height: 207px;
 `
 
 export const Header = styled.div`
@@ -40,4 +38,8 @@ export const MethodsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+
+  @media (max-width: 590px) {
+    flex-direction: column;
+  }
 `

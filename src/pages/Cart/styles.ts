@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CartContainer = styled.section`
+export const CartContainer = styled.form`
   max-width: 70rem;
   width: 97%;
   margin: 2.5rem auto;

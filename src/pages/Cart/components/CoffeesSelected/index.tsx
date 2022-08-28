@@ -54,6 +54,7 @@ export function CoffeesSelected() {
       <Button 
         label='CONFIRMAR PEDIDO'
         buttonType='default'
+        type='submit'
       />
     </CoffeesContainer>
   )

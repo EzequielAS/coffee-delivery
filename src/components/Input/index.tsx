@@ -1,21 +1,24 @@
-import { InputHTMLAttributes, useRef, useState } from 'react'
+import { 
+  forwardRef, 
+  ForwardRefRenderFunction, 
+  InputHTMLAttributes, 
+  useState 
+} from 'react'
 
-import { InputContainer, InputStyled, Text } from './styles'
+import { InputContainer, InputStyled, Text, ErrorInput } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   width?: string;
   optional?: boolean;
+  error?: string;
 }
 
-export function Input({ width, optional, ...rest }: InputProps) {
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> 
+= ({ width, optional, error, ...rest }, ref) => {
   const [isFocused, setIsFocused] = useState(false)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   function handleFocusInput() {
     setIsFocused(true)
-
-    if(inputRef.current)
-      inputRef.current.focus()
   }
 
   function handleBlurInput() {
@@ -26,15 +29,19 @@ export function Input({ width, optional, ...rest }: InputProps) {
     <InputContainer 
       isFocused={isFocused}
       width={width}
-      onClick={handleFocusInput}
-      onBlur={handleBlurInput}
     >
       <InputStyled  
-        ref={inputRef}
+        ref={ref}
         {...rest} 
+        onFocus={handleFocusInput}
+        onBlur={handleBlurInput}
       />
 
       {optional && <Text>Opcional</Text>}
+
+      {error && <ErrorInput>{error}</ErrorInput>}
     </InputContainer>
   )
 }
+
+export const Input = forwardRef(InputBase)

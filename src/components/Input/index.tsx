@@ -11,10 +11,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   width?: string;
   optional?: boolean;
   error?: string;
+  focus?: () => void;
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> 
-= ({ width, optional, error, ...rest }, ref) => {
+= ({ width, optional, error, focus, ...rest }, ref) => {
   const [isFocused, setIsFocused] = useState(false)
 
   function handleFocusInput() {
@@ -25,9 +26,17 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps>
     setIsFocused(false)
   }
 
+  function changeFocusToInput() {
+    if (!focus) return 
+
+    focus()
+    setIsFocused(true)
+  }
+
   return (
     <InputContainer 
       isFocused={isFocused}
+      onClick={changeFocusToInput}
       width={width}
     >
       <InputStyled  

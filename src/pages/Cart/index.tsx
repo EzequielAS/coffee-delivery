@@ -13,7 +13,6 @@ import {
   Title
 } from './styles'
 
-
 const orderFormValidationSchema = zod.object({
   cep: zod.string().min(8, 'coloque um cep válido'),
   street: zod.string().min(1, 'digite a rua'),

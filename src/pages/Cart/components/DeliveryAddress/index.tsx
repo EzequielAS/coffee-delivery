@@ -14,7 +14,7 @@ import {
 } from './styles'
 
 export function DeliveryAddress() {
-  const { register, formState } = useFormContext<OrderFormData>()
+  const { register, setFocus ,formState } = useFormContext<OrderFormData>()
 
   return (
     <FormContainer>
@@ -52,6 +52,7 @@ export function DeliveryAddress() {
             placeholder="Complemento"
             width="100%"
             {...register('complement')}
+            focus={() => setFocus('complement')}
             optional
           />
         </MultiInput>

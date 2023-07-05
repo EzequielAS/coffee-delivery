@@ -1,6 +1,6 @@
 # Coffee Delivery
 
-### Skills importantes no projeto:
+### Important Skills:
 <ul>
   <li>React</li>
   <li>Styled-Components</li>
@@ -20,4 +20,17 @@
     "
 >
   <img src="./github/home.png" />
+</div>
+
+### Cart
+
+<div 
+    style="
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        margin: 10px 0 60px 0;
+    "
+>
+  <img src="./github/cart.png" />
 </div>

@@ -4,9 +4,9 @@
 <ul>
   <li>React</li>
   <li>Styled-Components</li>
-  <li>useReducer do React</li>
-  <li>Layout component partilhado</li>
-  <li>Themes com Styled-Components</li>
+  <li>useReducer from React</li>
+  <li>Layout component shared</li>
+  <li>Themes with Styled-Components</li>
 </ul>
 
 ### Home

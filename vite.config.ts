@@ -15,5 +15,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  resolve: { alias: { '@': path.resolve(import.meta.dirname, 'src') } },
+  resolve: {
+    alias: { '@': path.resolve(import.meta.dirname, 'src') },
+    // Only bundle a single instance of Transformers.js
+    dedupe: ['@huggingface/transformers'],
+  },
+  worker: { format: 'es' },
+  build: { target: 'esnext' },
 })

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
-
-import { MethodContainer, Text } from './styles'
+import { cn } from '../../../../../../utils/cn'
 
 interface MethodProps {
   title: string;
@@ -10,9 +9,16 @@ interface MethodProps {
 
 export function Method({ title, icon, isSelected }: MethodProps) {
   return (
-    <MethodContainer isSelected={isSelected}>
+    <div
+      className={cn(
+        'flex flex-1 items-center justify-start gap-3 rounded-md border p-4 transition-colors duration-200 [&_svg]:text-base [&_svg]:text-purple hover:bg-base-hover max-[590px]:w-full',
+        isSelected
+          ? 'border-purple bg-purple-light'
+          : 'border-base-button bg-base-button',
+      )}
+    >
       {icon}
-      <Text>{title}</Text>
-    </MethodContainer>
+      <span className="text-xs uppercase text-base-text">{title}</span>
+    </div>
   )
 }

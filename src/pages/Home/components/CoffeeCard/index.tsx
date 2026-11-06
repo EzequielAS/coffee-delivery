@@ -1,23 +1,8 @@
-import { ShoppingCartSimple } from 'phosphor-react'
+import { ShoppingCartSimple } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { Button } from '../../../../components/Button'
 import { SelectQuantity } from '../../../../components/SelectQuantity'
 import { useOrderContext } from '../../../../contexts/OrderContext'
-
-import { 
-  CardContainer, 
-  ImgStyled, 
-  ChipsContainer, 
-  Chip,
-  TextContainer,
-  Title,
-  Description,
-  PriceContainer,
-  Price,
-  Currency,
-  PriceValue,
-  Controls
-} from './styles'
 
 interface CoffeeCardProps {
   id: number;
@@ -28,19 +13,19 @@ interface CoffeeCardProps {
   tags: string[];
 }
 
-export function CoffeeCard({ 
+export function CoffeeCard({
   id,
-  image, 
-  description, 
-  name, 
-  price, 
-  tags 
+  image,
+  description,
+  name,
+  price,
+  tags
 }: CoffeeCardProps) {
   const { handleAddNewProduct } = useOrderContext()
 
   const [coffeeQuantity, setCoffeeQuantity] = useState(1)
 
-  const priceFormatted = new Intl.NumberFormat('pt-BR', { 
+  const priceFormatted = new Intl.NumberFormat('pt-BR', {
     minimumFractionDigits: 2
   }).format(price)
 
@@ -68,30 +53,33 @@ export function CoffeeCard({
   }
 
   return (
-    <CardContainer>
-      <ImgStyled src={image} alt={name} />
+    <div className="flex flex-col items-center rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] bg-base-card px-6 py-5">
+      <img src={image} alt={name} className="mt-[-2.7rem] h-30 select-none" />
 
-      <ChipsContainer>
+      <div className="mt-3 flex items-center justify-center gap-1">
         {tags.map(tag => (
-          <Chip key={tag}>
+          <div
+            key={tag}
+            className="select-none rounded-full bg-yellow-light px-2 py-1 text-[0.625rem] font-bold leading-[0.8125rem] text-yellow-dark"
+          >
             {tag}
-          </Chip>
+          </div>
         ))}
-      </ChipsContainer>
+      </div>
 
-      <TextContainer>
-        <Title>{name}</Title>
-        <Description>{description}</Description>
-      </TextContainer>
+      <div className="mt-4 text-center">
+        <strong className="font-title text-xl font-extrabold leading-[1.625rem] text-base-subtitle">{name}</strong>
+        <span className="mt-2 block text-sm leading-[1.125rem] text-base-label">{description}</span>
+      </div>
 
-      <PriceContainer>
-        <Price>
-          <Currency>R$</Currency>
-          <PriceValue>{priceFormatted}</PriceValue>
-        </Price>
-        
-        <Controls>
-          <SelectQuantity 
+      <div className="mt-8 flex w-full items-center justify-between">
+        <div className="flex select-none items-end gap-1">
+          <span className="text-sm text-base-text">R$</span>
+          <b className="font-title text-2xl font-extrabold leading-[1.125rem] text-base-text">{priceFormatted}</b>
+        </div>
+
+        <div className="flex items-center justify-center gap-2">
+          <SelectQuantity
             add={handleAddCoffeeQuantity}
             remove={handleRemoveCoffeeQuantity}
             quantity={coffeeQuantity}
@@ -101,8 +89,8 @@ export function CoffeeCard({
             icon={<ShoppingCartSimple weight='fill' size={22} />}
             onClick={addCoffeeToCart}
           />
-        </Controls>
-      </PriceContainer>
-    </CardContainer>
+        </div>
+      </div>
+    </div>
   )
 }

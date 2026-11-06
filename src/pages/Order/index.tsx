@@ -1,79 +1,64 @@
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useTheme } from 'styled-components'
+import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import delivery from '../../assets/delivery.svg'
 import { CircleIcon } from '../../components/CircleIcon'
 
-import { 
-  OrderContainer, 
-  TitleWrapper,
-  Title,
-  Subtitle,
-  ContentWrapper,
-  CardAddress,
-  CardContent, 
-  ImgStyled,
-  InfoWrapper,
-  TextWrapper,
-  Text,
-  BStyled 
-} from './styles'
-
 export function Order() {
-  const colors = useTheme()
-
   return (
-    <OrderContainer>
-      <TitleWrapper>
-        <Title>Uhu! Pedido confirmado</Title>
-        <Subtitle>Agora é só aguardar que logo o café chegará até você</Subtitle>
-      </TitleWrapper>
+    <section className="mx-auto mt-20 w-[97%] max-w-[70rem]">
+      <div>
+        <p className="font-title text-[2rem] leading-[2.6rem] text-yellow-dark">Uhu! Pedido confirmado</p>
+        <p className="mb-10 text-xl leading-[1.625rem] text-base-subtitle">Agora é só aguardar que logo o café chegará até você</p>
+      </div>
 
-      <ContentWrapper>
-        <CardAddress>
-          <CardContent>
-            <InfoWrapper>
-              <CircleIcon 
-                bgColor={colors.purple}
+      <div className="flex items-center justify-between max-[1040px]:flex-col max-[1040px]:gap-8">
+        <div
+          className="relative h-[17rem] w-[97%] max-w-[32.875rem] rounded-[6px_36px_6px_36px]"
+          style={{ backgroundImage: 'linear-gradient(90deg, #C47F17, #8047F8)' }}
+        >
+          <div className="absolute right-1/2 top-1/2 h-[calc(100%-2px)] w-[calc(100%-2px)] -translate-y-1/2 translate-x-1/2 rounded-[6px_36px_6px_36px] bg-background p-10">
+            <div className="flex items-center gap-3">
+              <CircleIcon
+                bgColor="#8047F8"
                 icon={<MapPin weight='fill' size={16} />}
               />
-              <TextWrapper>
-                <Text>
-                  Entrega em <BStyled>Rua João Daniel Martinelli, 102</BStyled><br />
+              <div>
+                <p className="leading-5 text-base-text">
+                  Entrega em <b>Rua João Daniel Martinelli, 102</b><br />
                   Jabotiana - Aracaju, SE
-                </Text>
-              </TextWrapper>
-            </InfoWrapper>
-            
-            <InfoWrapper>
-              <CircleIcon 
-                bgColor={colors.yellow}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex items-center gap-3">
+              <CircleIcon
+                bgColor="#DBAC2C"
                 icon={<Timer weight='fill' size={16} />}
               />
-              <TextWrapper>
-                <Text>
+              <div>
+                <p className="leading-5 text-base-text">
                   Previsão de entrega<br />
-                  <BStyled>20 min - 30 min</BStyled>
-                </Text>
-              </TextWrapper>
-            </InfoWrapper>
+                  <b>20 min - 30 min</b>
+                </p>
+              </div>
+            </div>
 
-            <InfoWrapper>
-              <CircleIcon 
-                bgColor={colors['yellow-dark']}
+            <div className="mt-8 flex items-center gap-3">
+              <CircleIcon
+                bgColor="#C47F17"
                 icon={<CurrencyDollar weight='fill' size={16} />}
               />
-              <TextWrapper>
-                <Text>
+              <div>
+                <p className="leading-5 text-base-text">
                   Pagamento na entrega<br />
-                  <BStyled>Cartão de Crédito</BStyled>
-                </Text>
-              </TextWrapper>
-            </InfoWrapper>
-          </CardContent>
-        </CardAddress>
+                  <b>Cartão de Crédito</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <ImgStyled  src={delivery} alt="homem em cima de uma moto" />
-      </ContentWrapper>
-    </OrderContainer>
+        <img src={delivery} alt="homem em cima de uma moto" className="w-full max-w-[30.75rem]" />
+      </div>
+    </section>
   )
 }

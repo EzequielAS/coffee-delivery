@@ -1,31 +1,21 @@
-import { Trash } from 'phosphor-react'
+import { Trash } from '@phosphor-icons/react'
 import { Button } from '../../../../../../components/Button'
 import { SelectQuantity } from '../../../../../../components/SelectQuantity'
 import { useOrderContext } from '../../../../../../contexts/OrderContext'
 import { ICoffee } from '../../../../../../@types/coffee'
 import { formatPrice } from '../../../../../../utils/formatPrice'
 
-import { 
-  CoffeeContainer,
-  CoffeeInfos,
-  CoffeeName,
-  CoffeePrice, 
-  Controls,
-  ImgStyled,
-  Wrapper
-} from './styles'
-
-export function Coffee({ 
+export function Coffee({
   id,
   image,
   name,
   price,
   quantity
  }: ICoffee) {
-  const { 
-    handleIncrementProduct, 
+  const {
+    handleIncrementProduct,
     handleRemoveProduct,
-    handleDecrementProduct 
+    handleDecrementProduct
   } = useOrderContext()
 
   const priceFormmated = formatPrice(price)
@@ -45,18 +35,18 @@ export function Coffee({
   }
 
   return (
-    <CoffeeContainer>
-      <ImgStyled src={image} alt={name} />
+    <div className="flex items-center gap-5 border-b border-base-button pb-6 [&+&]:mt-6">
+      <img src={image} alt={name} className="h-16" />
 
-      <Wrapper>
-        <CoffeeInfos>
-          <CoffeeName>{name}</CoffeeName>
-          <CoffeePrice>
+      <div className="flex-1">
+        <div className="flex items-center justify-between">
+          <span className="text-base-subtitle">{name}</span>
+          <span className="font-bold leading-5 text-base-text">
             {priceFormmated}
-          </CoffeePrice>
-        </CoffeeInfos>
+          </span>
+        </div>
 
-        <Controls>
+        <div className="mt-2 flex items-center gap-2">
           <SelectQuantity
             add={incrementCoffee}
             remove={decrementCoffee}
@@ -69,8 +59,8 @@ export function Coffee({
             buttonType='clean'
             onClick={removeCoffee}
           />
-        </Controls>
-      </Wrapper>
-    </CoffeeContainer>
+        </div>
+      </div>
+    </div>
   )
 }

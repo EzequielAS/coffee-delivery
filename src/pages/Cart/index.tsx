@@ -3,15 +3,8 @@ import { CoffeesSelected } from './components/CoffeesSelected'
 import { PaymentMethod } from './components/PaymentMethod'
 import { useForm, FormProvider  } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from '@tanstack/react-router'
 import * as zod from 'zod'
-
-import { 
-  CartContainer, 
-  OrderAdditionalInfo,
-  OrderDetails, 
-  Title
-} from './styles'
 
 const orderFormValidationSchema = zod.object({
   cep: zod.string().min(8, 'coloque um cep válido'),
@@ -43,24 +36,27 @@ export function Cart() {
   const { handleSubmit } = orderForm
 
   function handleSubmitOrderForm(data: OrderFormData) {
-    navigate('/order')
+    navigate({ to: '/order' })
     console.log(data)
   }
 
   return (
-    <CartContainer onSubmit={handleSubmit(handleSubmitOrderForm)}>
+    <form
+      onSubmit={handleSubmit(handleSubmitOrderForm)}
+      className="mx-auto my-10 grid w-[97%] max-w-[70rem] grid-cols-[1fr_28rem] gap-8 max-[1140px]:grid-cols-1 max-[1140px]:overflow-hidden"
+    >
       <FormProvider {...orderForm}>
-        <OrderAdditionalInfo>
-          <Title>Complete seu pedido</Title>
+        <div>
+          <span className="font-title text-lg font-bold leading-[1.4rem] text-base-subtitle">Complete seu pedido</span>
           <DeliveryAddress />
           <PaymentMethod />
-        </OrderAdditionalInfo>
+        </div>
 
-        <OrderDetails>
-          <Title>Cafés selecionados</Title>
+        <div>
+          <span className="font-title text-lg font-bold leading-[1.4rem] text-base-subtitle">Cafés selecionados</span>
           <CoffeesSelected />
-        </OrderDetails>
+        </div>
       </FormProvider>
-    </CartContainer>
+    </form>
   )
 }

@@ -1,81 +1,69 @@
-import { 
-  Coffee, 
-  Package, 
-  ShoppingCart, 
-  Timer 
-} from 'phosphor-react'
-import { useTheme } from 'styled-components'
-import bannerBackground from '../../../../assets/banner-background.svg' 
+import {
+  Coffee,
+  Package,
+  ShoppingCart,
+  Timer
+} from '@phosphor-icons/react'
+import bannerBackground from '../../../../assets/banner-background.svg'
 import coffee from '../../../../assets/coffee.svg'
 import { CircleIcon } from '../../../../components/CircleIcon'
-
-import { 
-  BannerContainer, 
-  BannerContent,
-  TextContainer,
-  H1Styled,
-  H2Styled,
-  ServicesContainer,
-  SpanStyled,
-  Service,
-  ImgStyled,
-} from './styles'
 
 const services = {
   buy: {
     label: 'Compra simples e segura',
     icon: <ShoppingCart weight='fill' />,
-    color: 'yellow-dark'
+    color: '#C47F17'
   },
   packing: {
     label: 'Embalagem mantém o café intacto',
     icon: <Package weight='fill' />,
-    color: 'base-text'
+    color: '#574F4D'
   },
   delivery: {
     label: 'Entrega rápida e rastreada',
     icon: <Timer weight='fill' />,
-    color: 'yellow'
+    color: '#DBAC2C'
   },
   coffee: {
     label: 'O café chega fresquinho até você',
     icon: <Coffee weight='fill' />,
-    color: 'purple'
+    color: '#8047F8'
   },
 } as const
 
 export function Banner() {
-  const colors = useTheme()
-
   return (
-    <BannerContainer background={bannerBackground}>
-      <BannerContent>
-        <TextContainer>
-          <H1Styled>
-            Encontre o café perfeito 
+    <section
+      className="flex h-[34rem] w-full items-center justify-center bg-cover bg-no-repeat"
+      style={{ backgroundImage: `url(${bannerBackground})` }}
+    >
+      <div className="mx-auto flex w-[97%] max-w-[70rem] items-center justify-between max-[1000px]:justify-center">
+        <div>
+          <h1 className="max-w-[34rem] font-title text-[2.875rem] font-extrabold leading-[3.875rem] text-base-title max-[500px]:text-center max-[500px]:text-[2.6rem]">
+            Encontre o café perfeito
             para qualquer hora do dia
-          </H1Styled>
+          </h1>
 
-          <H2Styled>
-            Com o Coffee Delivery você recebe seu café onde estiver, a  
+          <h2 className="mt-4 max-w-[34rem] text-[1.25rem] leading-[1.625rem] text-base-subtitle max-[500px]:text-center max-[500px]:text-[1.1rem]">
+            Com o Coffee Delivery você recebe seu café onde estiver, a
             qualquer hora
-          </H2Styled>
+          </h2>
 
-          <ServicesContainer>
+          <div className="mt-[4.125rem] grid grid-cols-[max-content_max-content] gap-5 max-[500px]:mt-8 max-[500px]:flex max-[500px]:items-center max-[500px]:justify-center">
             {Object.entries(services).map(([key, datas]) => (
-              <Service key={key}>
-                <CircleIcon 
-                  bgColor={colors[datas.color]}
+              <div key={key} className="flex items-center gap-3 text-base">
+                <CircleIcon
+                  bgColor={datas.color}
                   icon={datas.icon}
                 />
-                <SpanStyled>{datas.label}</SpanStyled>
-              </Service>
+                <span className="text-center max-[500px]:hidden">{datas.label}</span>
+              </div>
             ))}
-          </ServicesContainer>
-        </TextContainer>
+          </div>
+        </div>
 
-        <ImgStyled src={coffee} />
-      </BannerContent>
-    </BannerContainer>
+        <img src={coffee} className="h-[22.5rem] max-[1000px]:hidden" />
+      </div>
+    </section>
   )
 }

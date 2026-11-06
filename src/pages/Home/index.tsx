@@ -2,23 +2,19 @@ import { Banner } from './components/Banner'
 import { CoffeeCard } from './components/CoffeeCard'
 import { coffeesDatas } from '../../coffeesDatas'
 
-import { 
-  ContainerCoffes, 
-  H3Styled, 
-  Coffees 
-} from './styles'
-
 export function Home() {
   return (
     <>
       <Banner />
 
-      <ContainerCoffes>
-        <H3Styled>Nossos cafés</H3Styled>
+      <section className="mx-auto mt-8 w-[97%] max-w-[70rem]">
+        <h3 className="font-title text-[2rem] font-extrabold leading-[2.625rem] text-base-subtitle max-[500px]:text-[1.7rem]">
+          Nossos cafés
+        </h3>
 
-        <Coffees>
+        <div className="my-[3.375rem] grid grid-cols-4 gap-8 max-[1140px]:grid-cols-3 max-[790px]:grid-cols-2 max-[490px]:grid-cols-1">
           {coffeesDatas.map(coffee => (
-            <CoffeeCard 
+            <CoffeeCard
               key={coffee.id}
               id={coffee.id}
               image={coffee.image}
@@ -28,8 +24,8 @@ export function Home() {
               tags={coffee.tags}
             />
           ))}
-        </Coffees>
-      </ContainerCoffes>
+        </div>
+      </section>
     </>
   )
 }

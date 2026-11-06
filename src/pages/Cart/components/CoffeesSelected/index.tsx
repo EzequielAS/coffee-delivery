@@ -3,13 +3,6 @@ import { useOrderContext } from '../../../../contexts/OrderContext'
 import { formatPrice } from '../../../../utils/formatPrice'
 import { Coffee } from './components/Coffee'
 
-import { 
-  CoffeesContainer,
-  PriceDetails,
-  SpanStyled,
-  PriceWrapper 
-} from './styles'
-
 export function CoffeesSelected() {
   const { products } = useOrderContext()
 
@@ -22,7 +15,7 @@ export function CoffeesSelected() {
   const totalPriceFormatted = formatPrice(sumTotalPricesProducts + delivery)
 
   return (
-    <CoffeesContainer>
+    <div className="mt-[0.9rem] rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] bg-base-card p-10">
       {products.map(coffee => (
         <Coffee
           key={coffee.id}
@@ -34,28 +27,28 @@ export function CoffeesSelected() {
         />
       ))}
 
-      <PriceWrapper>
-        <PriceDetails>
-          <SpanStyled>Total de itens</SpanStyled>
-          <SpanStyled>{totalItensPriceFormatted}</SpanStyled>
-        </PriceDetails>
+      <div className="my-6 flex flex-col items-center gap-3">
+        <div className="flex w-full items-center justify-between text-base font-normal text-base-text">
+          <span>Total de itens</span>
+          <span>{totalItensPriceFormatted}</span>
+        </div>
 
-        <PriceDetails>
-          <SpanStyled>Entrega</SpanStyled>
-          <SpanStyled>{deliveryFormatted}</SpanStyled>
-        </PriceDetails>
+        <div className="flex w-full items-center justify-between text-base font-normal text-base-text">
+          <span>Entrega</span>
+          <span>{deliveryFormatted}</span>
+        </div>
 
-        <PriceDetails isTotal>
-          <SpanStyled>Total</SpanStyled>
-          <SpanStyled>{totalPriceFormatted}</SpanStyled>
-        </PriceDetails>
-      </PriceWrapper>
+        <div className="flex w-full items-center justify-between text-xl font-bold text-base-subtitle">
+          <span>Total</span>
+          <span>{totalPriceFormatted}</span>
+        </div>
+      </div>
 
-      <Button 
+      <Button
         label='CONFIRMAR PEDIDO'
         buttonType='default'
         type='submit'
       />
-    </CoffeesContainer>
+    </div>
   )
 }

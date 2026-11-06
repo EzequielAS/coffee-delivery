@@ -3,10 +3,11 @@
 ### Important Skills:
 <ul>
   <li>React</li>
-  <li>Styled-Components</li>
+  <li>Tailwind CSS</li>
+  <li>TanStack Router (file-based routing)</li>
   <li>useReducer from React</li>
   <li>Layout component shared</li>
-  <li>Themes with Styled-Components</li>
+  <li>Chrome built-in AI (Prompt API) floating chat assistant</li>
 </ul>
 
 ### Home

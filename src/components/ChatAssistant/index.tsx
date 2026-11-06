@@ -2,8 +2,16 @@ import { useState } from 'react'
 import { ChatToggleButton } from './components/ChatToggleButton'
 import { ChatWindow } from './components/ChatWindow'
 import { useCoffeeChatAssistant } from './hooks/useCoffeeChatAssistant'
+import { useWebGpuSupport } from './hooks/useWebGpuSupport'
 
+// The assistant only runs on WebGPU, so the whole feature is hidden without it.
 export function ChatAssistant() {
+  const isWebGpuSupported = useWebGpuSupport()
+
+  return isWebGpuSupported ? <WebGpuChatAssistant /> : null
+}
+
+function WebGpuChatAssistant() {
   const [isOpen, setIsOpen] = useState(false)
   const { status, downloadProgress, messages, error, activate, sendMessage } = useCoffeeChatAssistant()
 

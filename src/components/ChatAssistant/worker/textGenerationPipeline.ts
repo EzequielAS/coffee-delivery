@@ -1,6 +1,6 @@
 import { pipeline, type TextGenerationPipeline } from '@huggingface/transformers'
-import { MODEL_ID, PIPELINE_TASK } from './constants'
-import { detectInferenceDevice, getModelDtype } from './device'
+import { LOG_PREFIX, MODEL_ID, PIPELINE_TASK } from './constants'
+import { detectInferenceConfig } from './device'
 import type { DownloadProgressCallback } from './types'
 
 let pipelinePromise: Promise<TextGenerationPipeline> | null = null
@@ -10,10 +10,13 @@ let pipelinePromise: Promise<TextGenerationPipeline> | null = null
 export function getTextGenerationPipeline(onDownloadProgress: DownloadProgressCallback) {
   if (!pipelinePromise) {
     pipelinePromise = (async () => {
-      const device = await detectInferenceDevice()
+      const config = await detectInferenceConfig()
+      if (!config) throw new Error('WebGPU is not available')
+      const { device, dtype } = config
+      console.info(`${LOG_PREFIX} inference: ${device} / ${dtype}`)
 
       return pipeline(PIPELINE_TASK, MODEL_ID, {
-        dtype: getModelDtype(device),
+        dtype,
         device,
         progress_callback: onDownloadProgress,
       })

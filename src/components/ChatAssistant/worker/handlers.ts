@@ -1,14 +1,15 @@
 import { ModelRegistry, TextStreamer, type Message } from '@huggingface/transformers'
 import { GENERATION_OPTIONS, LOG_PREFIX, MODEL_ID, PIPELINE_TASK } from './constants'
-import { detectInferenceDevice, getModelDtype } from './device'
+import { detectInferenceConfig } from './device'
 import { postResponse } from './postResponse'
 import { getTextGenerationPipeline } from './textGenerationPipeline'
 
 export async function handleCheckCache() {
   try {
-    const device = await detectInferenceDevice()
+    const config = await detectInferenceConfig()
+    if (!config) throw new Error('WebGPU is not available')
     const cached = await ModelRegistry.is_pipeline_cached(PIPELINE_TASK, MODEL_ID, {
-      dtype: getModelDtype(device),
+      dtype: config.dtype,
     })
     postResponse({ type: 'cacheStatus', data: { cached } })
   } catch (error) {

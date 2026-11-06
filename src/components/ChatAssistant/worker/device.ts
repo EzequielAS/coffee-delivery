@@ -1,26 +1,24 @@
-import type { InferenceDevice, ModelDtype, NavigatorWithGpu } from './types'
+import type { InferenceConfig, NavigatorWithGpu } from './types'
 
+// The assistant only runs on WebGPU, so this returns null when it is not
+// available and callers must not offer the feature.
+//
 // Checking `'gpu' in navigator` is not enough: the API can exist while
 // requestAdapter() still fails (missing GPU drivers, sandboxed/headless
-// Chrome, etc). We must confirm a real adapter is obtainable *before* ever
-// calling pipeline() with device: 'webgpu' — once onnxruntime-web attempts
-// (and fails) to initialize its WebGPU backend, it leaves the whole worker's
-// ONNX Runtime instance unable to fall back to WASM in the same session.
-export async function detectInferenceDevice(): Promise<InferenceDevice> {
+// Chrome, etc), so we confirm a real adapter is obtainable.
+//
+// The `shader-f16` feature only decides the weights: q4f16 needs it, while q4
+// runs on any WebGPU adapter (fp32 activations, a bit slower but still on GPU).
+export async function detectInferenceConfig(): Promise<InferenceConfig | null> {
   const gpu = (navigator as NavigatorWithGpu).gpu
-  if (!gpu) return 'wasm'
+  if (!gpu) return null
 
   try {
     const adapter = await gpu.requestAdapter()
-    // The q4f16 model needs the `shader-f16` feature. Many GPUs/drivers expose
-    // an adapter without it, and the failure only shows up at generation time
-    // ("Program Gather requires f16 but the device does not support it").
-    return adapter?.features.has('shader-f16') ? 'webgpu' : 'wasm'
-  } catch {
-    return 'wasm'
-  }
-}
+    if (!adapter) return null
 
-export function getModelDtype(device: InferenceDevice): ModelDtype {
-  return device === 'webgpu' ? 'q4f16' : 'q4'
+    return { device: 'webgpu', dtype: adapter.features.has('shader-f16') ? 'q4f16' : 'q4' }
+  } catch {
+    return null
+  }
 }

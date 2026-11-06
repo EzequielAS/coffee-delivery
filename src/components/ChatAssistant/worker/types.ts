@@ -1,8 +1,13 @@
 import type { Message } from '@huggingface/transformers'
 
-export type InferenceDevice = 'webgpu' | 'wasm'
+export type InferenceDevice = 'webgpu'
 
 export type ModelDtype = 'q4f16' | 'q4'
+
+export interface InferenceConfig {
+  device: InferenceDevice
+  dtype: ModelDtype
+}
 
 export type AssistantWorkerRequest =
   | { type: 'checkCache' }

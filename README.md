@@ -7,7 +7,6 @@
   <li>TanStack Router (file-based routing)</li>
   <li>useReducer from React</li>
   <li>Layout component shared</li>
-  <li>Chrome built-in AI (Prompt API) floating chat assistant</li>
 </ul>
 
 ### Home
@@ -20,7 +19,7 @@
         margin: 10px 0 60px 0;
     "
 >
-  <img src="./github/home.png" />
+  <img src="./docs/home.png" />
 </div>
 
 ### Cart
@@ -33,5 +32,5 @@
         margin: 10px 0 60px 0;
     "
 >
-  <img src="./github/cart.png" />
+  <img src="./docs/cart.png" />
 </div>

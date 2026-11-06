@@ -1,18 +1,8 @@
 import { Logo } from '../Logo'
-import { MapPin, ShoppingCart } from 'phosphor-react'
+import { MapPin, ShoppingCart } from '@phosphor-icons/react'
 import { Button } from '../Button'
-import { Link } from 'react-router-dom'
+import { Link } from '@tanstack/react-router'
 import { useOrderContext } from '../../contexts/OrderContext'
-
-import { 
-  HeaderStyled, 
-  HeaderContent,
-  CartAndAddressContainer,
-  AddressTag, 
-  AddressText,
-  CartButtonWrapper,
-  CoffeeQuantity
-} from './styles'
 
 export function Header() {
   const { products } = useOrderContext()
@@ -22,34 +12,34 @@ export function Header() {
   }, 0)
 
   return (
-    <HeaderStyled>
-      <HeaderContent>
+    <header className="sticky top-0 bg-background py-8">
+      <div className="mx-auto flex w-[97%] max-w-[70rem] items-center justify-between">
         <Logo />
-        
-        <CartAndAddressContainer>
-          <AddressTag>
+
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 rounded-md bg-purple-light p-2 text-sm text-purple-dark [&_svg]:text-purple">
             <MapPin weight='fill' size={22} />
-            <AddressText>Aracaju, SE</AddressText>
-          </AddressTag>
+            <span>Aracaju, SE</span>
+          </div>
 
           <Link to="/cart">
-            <CartButtonWrapper>
-              <CoffeeQuantity>
+            <div className="relative">
+              <span className="absolute -right-[20%] -top-[20%] flex h-5 w-5 items-center justify-center rounded-full bg-yellow-dark text-xs font-bold text-white">
                 {totalProductsAddedToCart}
-              </CoffeeQuantity>
-              <Button 
+              </span>
+              <Button
                 icon={
-                  <ShoppingCart 
-                    weight='fill' 
-                    size={22} 
+                  <ShoppingCart
+                    weight='fill'
+                    size={22}
                   />
-                } 
+                }
                 buttonType="cart"
               />
-            </CartButtonWrapper>
+            </div>
           </Link>
-        </CartAndAddressContainer>
-      </HeaderContent>
-    </HeaderStyled>
+        </div>
+      </div>
+    </header>
   )
 }

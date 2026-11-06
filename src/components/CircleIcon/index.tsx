@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
 
-import { CircleContainer } from './styles'
-
 interface CircleIconProps {
   icon: ReactNode;
   bgColor: string;
@@ -9,8 +7,11 @@ interface CircleIconProps {
 
 export function CircleIcon({ bgColor, icon }: CircleIconProps) {
   return (
-    <CircleContainer bgColor={bgColor}>
+    <div
+      className="flex items-center rounded-full p-2 text-background"
+      style={{ background: bgColor }}
+    >
       {icon}
-    </CircleContainer>
+    </div>
   )
 }

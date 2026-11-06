@@ -1,11 +1,10 @@
-import { 
-  forwardRef, 
-  ForwardRefRenderFunction, 
-  InputHTMLAttributes, 
-  useState 
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  InputHTMLAttributes,
+  useState
 } from 'react'
-
-import { InputContainer, InputStyled, Text, ErrorInput } from './styles'
+import { cn } from '../../utils/cn'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   width?: string;
@@ -14,8 +13,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   focus?: () => void;
 }
 
-const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> 
-= ({ width, optional, error, focus, ...rest }, ref) => {
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps>
+= ({ width, optional, error, focus, className, style, ...rest }, ref) => {
   const [isFocused, setIsFocused] = useState(false)
 
   function handleFocusInput() {
@@ -27,29 +26,38 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps>
   }
 
   function changeFocusToInput() {
-    if (!focus) return 
+    if (!focus) return
 
     focus()
     setIsFocused(true)
   }
 
   return (
-    <InputContainer 
-      isFocused={isFocused}
+    <div
+      className={cn(
+        'relative flex cursor-text items-center rounded border bg-base-input transition-colors duration-200 ease-in-out',
+        isFocused ? 'border-yellow-dark' : 'border-base-button',
+        className,
+      )}
+      style={{ width, ...style }}
       onClick={changeFocusToInput}
-      width={width}
     >
-      <InputStyled  
+      <input
         ref={ref}
-        {...rest} 
+        {...rest}
+        className="h-full flex-1 overflow-hidden border-none bg-transparent p-3 text-sm text-base-text placeholder:text-base-label"
         onFocus={handleFocusInput}
         onBlur={handleBlurInput}
       />
 
-      {optional && <Text>Opcional</Text>}
+      {optional && <span className="mx-[0.3rem] text-xs italic text-base-label">Opcional</span>}
 
-      {error && <ErrorInput>{error}</ErrorInput>}
-    </InputContainer>
+      {error && (
+        <span className="absolute bottom-[-3px] w-full translate-y-full text-[0.65rem] text-red-600">
+          {error}
+        </span>
+      )}
+    </div>
   )
 }
 

@@ -1,9 +1,4 @@
-import { Minus, Plus } from 'phosphor-react'
-
-import { 
-  SelectContainer, 
-  SpanStyled 
-} from './style'
+import { Minus, Plus } from '@phosphor-icons/react'
 
 interface SelectQuantityProps {
   add: () => void;
@@ -13,24 +8,24 @@ interface SelectQuantityProps {
 
 export function SelectQuantity({ add, remove, quantity }: SelectQuantityProps) {
   return (
-    <SelectContainer>
-      <Minus 
-        weight='fill' 
-        size={14} 
+    <div className="flex items-center gap-1 rounded-md bg-base-button p-2">
+      <Minus
+        weight='fill'
+        size={14}
         onClick={remove}
-        type="button"
+        className="cursor-pointer text-purple transition-colors duration-250 hover:text-purple-dark"
       />
 
-      <SpanStyled>
+      <span className="w-5 select-none text-center leading-5 text-base-title">
         {quantity}
-      </SpanStyled>
+      </span>
 
       <Plus
-        weight='fill' 
-        size={14} 
+        weight='fill'
+        size={14}
         onClick={add}
-        type="button"
+        className="cursor-pointer text-purple transition-colors duration-250 hover:text-purple-dark"
       />
-    </SelectContainer>
+    </div>
   )
 }
